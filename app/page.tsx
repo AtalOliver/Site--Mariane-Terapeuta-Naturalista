@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -71,6 +73,20 @@ export default function Home() {
     window.location.href = "/blog"
   }
 
+  const handleLinhaEcoClick = () => {
+    document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const handleSobreClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById("sobre")?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const handleContatosClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById("contatos")?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <div className="min-h-screen bg-white" style={{ scrollBehavior: "smooth" }}>
       {/* Header */}
@@ -90,9 +106,9 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <Link href="#sobre" className="text-gray-700 hover:text-primary transition-colors">
+              <button onClick={handleSobreClick} className="text-gray-700 hover:text-primary transition-colors">
                 Sobre
-              </Link>
+              </button>
               <Link href="#servicos" className="text-gray-700 hover:text-primary transition-colors">
                 Serviços
               </Link>
@@ -108,9 +124,9 @@ export default function Home() {
               <button onClick={handleBlogClick} className="text-gray-700 hover:text-primary transition-colors">
                 Blog
               </button>
-              <Link href="#contatos" className="text-gray-700 hover:text-primary transition-colors">
+              <button onClick={handleContatosClick} className="text-gray-700 hover:text-primary transition-colors">
                 Contatos
-              </Link>
+              </button>
             </nav>
 
             {/* Mobile Menu Button */}
@@ -123,13 +139,15 @@ export default function Home() {
           {isMenuOpen && (
             <nav className="md:hidden mt-4 pb-4 border-t pt-4">
               <div className="flex flex-col space-y-4">
-                <Link
-                  href="#sobre"
-                  className="text-gray-700 hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={(e) => {
+                    handleSobreClick(e)
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-gray-700 hover:text-primary transition-colors text-left"
                 >
                   Sobre
-                </Link>
+                </button>
                 <Link
                   href="#servicos"
                   className="text-gray-700 hover:text-primary transition-colors"
@@ -167,13 +185,15 @@ export default function Home() {
                 >
                   Blog
                 </button>
-                <Link
-                  href="#contatos"
-                  className="text-gray-700 hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={(e) => {
+                    handleContatosClick(e)
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-gray-700 hover:text-primary transition-colors text-left"
                 >
                   Contatos
-                </Link>
+                </button>
               </div>
             </nav>
           )}
@@ -227,6 +247,7 @@ export default function Home() {
                 size="lg"
                 variant="outline"
                 className="border-secondary text-secondary hover:bg-secondary hover:text-white bg-white/80"
+                onClick={handleLinhaEcoClick}
               >
                 Linha Eco Encanto
               </Button>
@@ -244,6 +265,7 @@ export default function Home() {
             size="lg"
             variant="outline"
             className="border-secondary text-secondary hover:bg-secondary hover:text-white bg-white/80"
+            onClick={handleLinhaEcoClick}
           >
             Linha Eco Encanto
           </Button>
@@ -273,7 +295,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
             <div className="relative animate-slide-in-left">
               <Image
                 src="/mari-atendimento.jpg"
@@ -304,17 +326,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="animate-slide-in-left">
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Tudo começou com uma dor pessoal — e uma descoberta. Nunca tinha usado produtos naturais até sofrer um
+                Tudo começou com uma dor pessoal, e uma descoberta. Nunca tinha usado produtos naturais até sofrer um
                 corte químico no cabelo. Foi um choque, mas também um ponto de virada. Buscando alternativas para
                 recuperar os fios, encontrei um aliado simples e poderoso: o óleo de coco. Ele transformou meu cabelo e
-                acendeu em mim algo ainda maior — o desejo de compartilhar essa solução com outras pessoas. Foi assim
-                que comecei, vendendo óleo de coco, depois óleo de rícino. Nessa mesma época, em uma viagem com meu
-                esposo — que estava desempregado, conheci as argilas naturais em uma feira. Fiquei encantada com o
-                potencial dos produtos naturais e vi ali uma nova oportunidade de empreender. Surgia, então, a Eco
-                Encanto — minha linha de produtos naturais, feita com propósito, simplicidade e verdade.
+                acendeu em mim algo ainda maior, o desejo de compartilhar essa solução com outras pessoas. Foi assim que
+                comecei, vendendo óleo de coco, depois óleo de rícino. Nessa mesma época, em uma viagem com meu esposo,
+                que estava desempregado, conheci as argilas naturais em uma feira. Fiquei encantada com o potencial dos
+                produtos naturais e vi ali uma nova oportunidade de empreender. Surgia, então, a Eco Encanto, minha
+                linha de produtos naturais, feita com propósito, simplicidade e verdade.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 E com a Eco Encanto, ofereço uma linha de produtos naturais que refletem minha jornada, meu propósito e
@@ -459,41 +481,43 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 animate-bounce-in">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden bg-gradient-to-br from-white to-primary/5">
-              <div className="relative h-48">
+              <div className="relative h-48 flex items-center justify-center">
                 <Image
-                  src="/brinde-oleos.jpg"
-                  alt="Óleos Essenciais Eco Encanto"
+                  src="/oleos-vegetais-eco-encanto.jpg"
+                  alt="Óleos Vegetais Naturais e Blends Eco Encanto"
                   fill
                   className="object-cover object-center"
                 />
               </div>
-              <CardHeader>
-                <CardTitle className="text-primary">Óleos Vegetais Naturais</CardTitle>
-                <CardDescription>
+              <CardHeader className="text-center">
+                <CardTitle className="text-primary">Óleos Vegetais Naturais e Blends</CardTitle>
+                <CardDescription className="text-center">
                   Óleos puros e naturais selecionados para aromaterapia, massagem e cuidados terapêuticos diários.
+                  <br />
+                  <span className="font-medium">Blends</span>
                 </CardDescription>
               </CardHeader>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden bg-gradient-to-br from-white to-secondary/5">
-              <div className="relative h-48">
+              <div className="relative h-48 flex items-center justify-center">
                 <Image
                   src="/serum-eco-encanto.jpg"
-                  alt="Sérum e Blends Eco Encanto"
+                  alt="Sérum Eco Encanto"
                   fill
                   className="object-cover object-center"
                 />
               </div>
-              <CardHeader>
-                <CardTitle className="text-secondary">Sérum e Blends</CardTitle>
-                <CardDescription>
+              <CardHeader className="text-center">
+                <CardTitle className="text-secondary">Sérum</CardTitle>
+                <CardDescription className="text-center">
                   nutre profundamente a pele, auxilia na diminuição de manchas e proporciona hidratação intensa.
                 </CardDescription>
               </CardHeader>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden bg-gradient-to-br from-white to-primary/5">
-              <div className="relative h-48">
+              <div className="relative h-48 flex items-center justify-center">
                 <Image
                   src="/batom-eco-encanto.jpg"
                   alt="Cosméticos Naturais Eco Encanto"
@@ -501,9 +525,9 @@ export default function Home() {
                   className="object-cover object-center"
                 />
               </div>
-              <CardHeader>
+              <CardHeader className="text-center">
                 <CardTitle className="text-primary">Cosméticos Artesanais</CardTitle>
-                <CardDescription>
+                <CardDescription className="text-center">
                   Sabonetes, cremes e produtos de beleza feitos com ingredientes naturais e técnicas artesanais.
                 </CardDescription>
               </CardHeader>
@@ -584,17 +608,60 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="animate-slide-in-left">
-              <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-primary/5">
-                <CardHeader>
-                  <CardTitle className="text-primary">Envie uma Mensagem</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <Input placeholder="Seu nome" />
-                  <Input type="email" placeholder="Seu e-mail" />
-                  <Textarea placeholder="Sua mensagem" rows={4} />
-                  <Button className="w-full bg-primary hover:bg-primary/90">Enviar Mensagem</Button>
-                </CardContent>
-              </Card>
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault()
+                  const form = e.target as HTMLFormElement
+                  const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement
+
+                  // Loading state
+                  submitButton.disabled = true
+                  submitButton.textContent = "Enviando..."
+
+                  const formData = new FormData(form)
+                  const data = {
+                    name: formData.get("name"),
+                    email: formData.get("email"),
+                    message: formData.get("message"),
+                  }
+
+                  try {
+                    const response = await fetch("/api/contact", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(data),
+                    })
+
+                    if (response.ok) {
+                      alert("✅ Mensagem enviada com sucesso! Mariane entrará em contato em breve.")
+                      form.reset()
+                    } else {
+                      alert("❌ Erro ao enviar mensagem. Tente novamente.")
+                    }
+                  } catch (error) {
+                    console.error("Erro ao enviar email:", error)
+                    alert("❌ Erro ao enviar mensagem. Verifique sua conexão e tente novamente.")
+                  } finally {
+                    // Reset button state
+                    submitButton.disabled = false
+                    submitButton.textContent = "Enviar Mensagem"
+                  }
+                }}
+              >
+                <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-primary/5">
+                  <CardHeader>
+                    <CardTitle className="text-primary">Envie uma Mensagem</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Input name="name" placeholder="Seu nome" required />
+                    <Input name="email" type="email" placeholder="Seu e-mail" required />
+                    <Textarea name="message" placeholder="Sua mensagem" rows={4} required />
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                      Enviar Mensagem
+                    </Button>
+                  </CardContent>
+                </Card>
+              </form>
             </div>
 
             <div className="space-y-8 animate-slide-in-right">
@@ -661,16 +728,22 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4">Links Rápidos</h4>
               <div className="space-y-2">
-                <Link href="#sobre" className="block text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={handleSobreClick}
+                  className="block text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Sobre
-                </Link>
+                </button>
                 <Link href="#servicos" className="block text-gray-400 hover:text-white transition-colors">
                   Serviços
                 </Link>
                 <Link href="#produtos" className="block text-gray-400 hover:text-white transition-colors">
                   Eco Encanto
                 </Link>
-                <button onClick={handleBlogClick} className="block text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={handleBlogClick}
+                  className="block text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Blog
                 </button>
               </div>

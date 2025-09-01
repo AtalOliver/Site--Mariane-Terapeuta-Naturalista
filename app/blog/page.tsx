@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -12,6 +12,7 @@ import { ArrowLeft, Calendar, Clock, Search, MessageCircle, Menu, X } from "luci
 export default function BlogPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("Todos")
 
   const blogPosts = [
     {
@@ -134,6 +135,18 @@ export default function BlogPage() {
       category: "Detox Corporal",
       tags: ["detox", "desparasitação", "renovação"],
     },
+    {
+      id: 11,
+      title: "Receitas Saudáveis: Nutrição que Transforma sua Pele de Dentro para Fora",
+      slug: "receitas-saudaveis-pele",
+      excerpt:
+        "Descubra receitas nutritivas e deliciosas que nutrem sua pele de dentro para fora. Alimentos ricos em antioxidantes, vitaminas e minerais que promovem uma pele radiante e saudável.",
+      image: "/blog/receitas-saudaveis.png",
+      date: "2025-01-22",
+      readTime: "7 min",
+      category: "Nutrição e Beleza",
+      tags: ["receitas", "nutrição", "alimentação saudável", "antioxidantes"],
+    },
   ]
 
   const categories = [
@@ -147,15 +160,16 @@ export default function BlogPage() {
     "Exercícios Faciais",
     "Detox Corporal",
   ]
-  const [selectedCategory, setSelectedCategory] = useState("Todos")
 
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === "Todos" || post.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+  const filteredPosts = useMemo(() => {
+    return blogPosts.filter((post) => {
+      const matchesSearch =
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesCategory = selectedCategory === "Todos" || post.category === selectedCategory
+      return matchesSearch && matchesCategory
+    })
+  }, [searchTerm, selectedCategory])
 
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/5571992353171", "_blank")
@@ -179,7 +193,7 @@ export default function BlogPage() {
                   width={180}
                   height={60}
                   className="h-12 w-auto cursor-pointer"
-                  loading="lazy"
+                  priority
                 />
               </Link>
             </div>
@@ -292,11 +306,12 @@ export default function BlogPage() {
                 rejuvenescentes pro age.
               </p>
               <p>
-                Além disso, ela também assina a Eco Encanto, sua linha exclusiva de produtos naturais que potencializam
-                os resultados dos tratamentos e levam a natureza para a sua rotina de beleza.
+                Além disso, ela também assina a Eco Encanto, sua linha exclusiva de produtos naturais e artesanais que
+                potencializam os resultados dos tratamentos e levam a natureza para a sua rotina de beleza.
               </p>
               <p className="text-primary font-medium">
-                🌿 Inspire-se, descubra dicas valiosas e conheça mais sobre o universo dos cuidados naturais.
+                🌿 Inspire-se, descubra dicas valiosas e conheça mais sobre o universo dos cuidados naturais e
+                artesanais.
               </p>
             </div>
           </div>
@@ -349,6 +364,7 @@ export default function BlogPage() {
                     fill
                     className="object-cover object-center"
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge variant="secondary" className="bg-white/90 text-primary">
@@ -394,20 +410,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-gradient-to-br from-secondary via-primary/20 to-accent text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Receba Novidades do Blog</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Inscreva-se para receber os últimos artigos sobre bem-estar natural diretamente no seu e-mail.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input placeholder="Seu e-mail" className="bg-white text-gray-800" />
-            <Button className="bg-white text-primary hover:bg-gray-100">Inscrever-se</Button>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -442,6 +444,9 @@ export default function BlogPage() {
                 </Link>
                 <Link href="/blog" className="block text-gray-400 hover:text-white transition-colors">
                   Blog
+                </Link>
+                <Link href="/#contatos" className="block text-gray-400 hover:text-white transition-colors">
+                  Contatos
                 </Link>
               </div>
             </div>
