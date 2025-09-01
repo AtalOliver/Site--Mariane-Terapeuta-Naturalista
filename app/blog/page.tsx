@@ -1,18 +1,19 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Clock, Search, MessageCircle, Menu, X } from "lucide-react"
+import { ArrowLeft, Calendar, Clock, Search, MessageCircle, Menu, X, ChevronDown } from "lucide-react"
 
 export default function BlogPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("Todos")
+  const [postsToShow, setPostsToShow] = useState(6)
 
   const blogPosts = [
     {
@@ -171,13 +172,23 @@ export default function BlogPage() {
     })
   }, [searchTerm, selectedCategory])
 
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/5571992353171", "_blank")
-  }
+  const displayedPosts = useMemo(() => {
+    return filteredPosts.slice(0, postsToShow)
+  }, [filteredPosts, postsToShow])
 
-  const handleInstagramClick = () => {
+  const handleWhatsAppClick = useCallback(() => {
+    window.open("https://wa.me/5571992353171", "_blank")
+  }, [])
+
+  const handleInstagramClick = useCallback(() => {
     window.open("https://www.instagram.com/marianeterapeutanaturista?igsh=MXd5MmJkY2tybHB2Mg%3D%3D", "_blank")
-  }
+  }, [])
+
+  const loadMorePosts = useCallback(() => {
+    setPostsToShow((prev) => Math.min(prev + 6, filteredPosts.length))
+  }, [filteredPosts.length])
+
+  const hasMorePosts = displayedPosts.length < filteredPosts.length
 
   return (
     <div className="min-h-screen bg-white" style={{ scrollBehavior: "smooth" }}>
@@ -192,7 +203,7 @@ export default function BlogPage() {
                   alt="Mariane Oliveira - Terapeuta Naturalista"
                   width={180}
                   height={60}
-                  className="h-12 w-auto cursor-pointer"
+                  className="h-16 w-auto cursor-pointer"
                   priority
                 />
               </Link>
@@ -337,7 +348,10 @@ export default function BlogPage() {
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => {
+                    setSelectedCategory(category)
+                    setPostsToShow(6) // Reset pagination when changing category
+                  }}
                   className={selectedCategory === category ? "bg-primary" : ""}
                 >
                   {category}
@@ -352,7 +366,7 @@ export default function BlogPage() {
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
-            {filteredPosts.map((post) => (
+            {displayedPosts.map((post, index) => (
               <Card
                 key={post.id}
                 className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden bg-gradient-to-br from-white to-primary/5"
@@ -363,7 +377,8 @@ export default function BlogPage() {
                     alt={post.title}
                     fill
                     className="object-cover object-center"
-                    loading="lazy"
+                    loading={index < 4 ? "eager" : "lazy"}
+                    priority={index < 4}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute top-4 left-4">
@@ -401,6 +416,21 @@ export default function BlogPage() {
               </Card>
             ))}
           </div>
+
+          {/* Load More Button */}
+          {hasMorePosts && (
+            <div className="text-center mt-12">
+              <Button
+                onClick={loadMorePosts}
+                variant="outline"
+                size="lg"
+                className="hover:bg-primary hover:text-white bg-transparent"
+              >
+                <ChevronDown className="h-4 w-4 mr-2" />
+                Carregar mais artigos
+              </Button>
+            </div>
+          )}
 
           {filteredPosts.length === 0 && (
             <div className="text-center py-12">
