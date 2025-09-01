@@ -295,7 +295,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-6 items-center mb-16">
             <div className="relative animate-slide-in-left">
               <Image
                 src="/mari-atendimento.jpg"
@@ -326,7 +326,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-6 items-center">
             <div className="animate-slide-in-left">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Tudo começou com uma dor pessoal, e uma descoberta. Nunca tinha usado produtos naturais até sofrer um
