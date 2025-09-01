@@ -97,9 +97,9 @@ export default function Home() {
               <Image
                 src="/logo-mariane.png"
                 alt="Mariane Oliveira - Terapeuta Naturalista"
-                width={180}
-                height={60}
-                className="h-12 w-auto"
+                width={200}
+                height={70}
+                className="h-16 w-auto"
                 loading="lazy"
               />
             </div>
