@@ -608,46 +608,13 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="animate-slide-in-left">
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault()
-                  const form = e.target as HTMLFormElement
-                  const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement
+              <form action="https://formsubmit.co/marianecarmooliveira@gmail.com" method="POST">
+                {/* FormSubmit configuration fields */}
+                <input type="hidden" name="_subject" value="Nova mensagem do site - Mariane Terapeuta" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value="https://mariane-terapeuta.vercel.app/#contatos" />
 
-                  // Loading state
-                  submitButton.disabled = true
-                  submitButton.textContent = "Enviando..."
-
-                  const formData = new FormData(form)
-                  const data = {
-                    name: formData.get("name"),
-                    email: formData.get("email"),
-                    message: formData.get("message"),
-                  }
-
-                  try {
-                    const response = await fetch("/api/contact", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(data),
-                    })
-
-                    if (response.ok) {
-                      alert("✅ Mensagem enviada com sucesso! Mariane entrará em contato em breve.")
-                      form.reset()
-                    } else {
-                      alert("❌ Erro ao enviar mensagem. Tente novamente.")
-                    }
-                  } catch (error) {
-                    console.error("Erro ao enviar email:", error)
-                    alert("❌ Erro ao enviar mensagem. Verifique sua conexão e tente novamente.")
-                  } finally {
-                    // Reset button state
-                    submitButton.disabled = false
-                    submitButton.textContent = "Enviar Mensagem"
-                  }
-                }}
-              >
                 <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-primary/5">
                   <CardHeader>
                     <CardTitle className="text-primary">Envie uma Mensagem</CardTitle>
@@ -655,6 +622,7 @@ export default function Home() {
                   <CardContent className="space-y-4">
                     <Input name="name" placeholder="Seu nome" required />
                     <Input name="email" type="email" placeholder="Seu e-mail" required />
+                    <Input name="phone" type="tel" placeholder="Telefone (opcional)" />
                     <Textarea name="message" placeholder="Sua mensagem" rows={4} required />
                     <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                       Enviar Mensagem
