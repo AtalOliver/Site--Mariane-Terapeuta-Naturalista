@@ -201,7 +201,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative mt-20 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-24 md:pt-20 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
         {/* Mobile Video Background (default, hidden on md and up) */}
         <div className="md:hidden absolute inset-0 z-0">
           <video autoPlay muted loop playsInline className="w-full h-full object-cover">
@@ -606,8 +606,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:max-w-5xl lg:mx-auto lg:gap-8">
-            <div className="animate-slide-in-left">
+          <div className="flex flex-col space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:max-w-5xl lg:mx-auto lg:gap-8">
+            <div className="animate-slide-in-left px-4 md:px-0">
               <form action="https://formsubmit.co/marianecarmooliveira@gmail.com" method="POST">
                 {/* FormSubmit configuration fields */}
                 <input type="hidden" name="_subject" value="Nova mensagem do site - Mariane Terapeuta" />
@@ -620,10 +620,16 @@ export default function Home() {
                     <CardTitle className="text-primary">Envie uma Mensagem</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <Input name="name" placeholder="Seu nome" required />
-                    <Input name="email" type="email" placeholder="Seu e-mail" required />
-                    <Input name="phone" type="tel" placeholder="Telefone (opcional)" />
-                    <Textarea name="message" placeholder="Sua mensagem" rows={4} required />
+                    <Input name="name" placeholder="Seu nome" required className="w-full" />
+                    <Input name="email" type="email" placeholder="Seu e-mail" required className="w-full" />
+                    <Input name="phone" type="tel" placeholder="Telefone (opcional)" className="w-full" />
+                    <Textarea
+                      name="message"
+                      placeholder="Sua mensagem"
+                      rows={4}
+                      required
+                      className="w-full resize-none"
+                    />
                     <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                       Enviar Mensagem
                     </Button>
@@ -632,38 +638,42 @@ export default function Home() {
               </form>
             </div>
 
-            <div className="space-y-8 animate-slide-in-right">
+            <div className="animate-slide-in-right px-4 md:px-0">
               <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-secondary/5">
                 <CardHeader>
                   <CardTitle className="text-primary">Contato Direto</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <Phone className="h-5 w-5 text-secondary" />
+                    <Phone className="h-5 w-5 text-secondary flex-shrink-0" />
                     <span className="text-gray-600">(71) 99235-3171</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Mail className="h-5 w-5 text-secondary" />
-                    <span className="text-gray-600">marianecarmooliveira@gmail.com</span>
+                    <Mail className="h-5 w-5 text-secondary flex-shrink-0" />
+                    <span className="text-gray-600 break-all">marianecarmooliveira@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Instagram className="h-5 w-5 text-secondary" />
+                    <Instagram className="h-5 w-5 text-secondary flex-shrink-0" />
                     <span className="text-gray-600">@marianeterapeutanaturista</span>
                   </div>
                   <div className="flex items-center space-x-3 cursor-pointer" onClick={handleLocationClick}>
-                    <MapPin className="h-5 w-5 text-secondary" />
+                    <MapPin className="h-5 w-5 text-secondary flex-shrink-0" />
                     <span className="text-gray-600 hover:text-primary transition-colors">Ver localização</span>
                   </div>
 
-                  <div className="flex space-x-4 pt-4">
-                    <Button size="lg" className="bg-green-500 hover:bg-green-600 flex-1" onClick={handleWhatsAppClick}>
+                  <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 pt-4">
+                    <Button
+                      size="lg"
+                      className="bg-green-500 hover:bg-green-600 w-full sm:flex-1"
+                      onClick={handleWhatsAppClick}
+                    >
                       <MessageCircle className="mr-2 h-5 w-5" />
                       WhatsApp
                     </Button>
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white bg-white flex-1"
+                      className="border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white bg-white w-full sm:flex-1"
                       onClick={handleInstagramClick}
                     >
                       <Instagram className="mr-2 h-5 w-5" />
