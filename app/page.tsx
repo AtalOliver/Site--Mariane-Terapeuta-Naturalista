@@ -201,85 +201,90 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-56 md:pt-52 pb-12 px-6 min-h-screen flex flex-col justify-center overflow-hidden">
-        {/* Mobile Video Background (default, hidden on md and up) */}
-        <div className="md:hidden absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-primary/20"></div>
-        </div>
+      <section className="relative overflow-hidden">
+        {/* Fixed spacer to account for navbar height */}
+        <div className="h-24 md:h-20"></div>
 
-        {/* Desktop/Tablet Video Background (hidden on small screens) */}
-        <div className="hidden md:block absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-            <source src="https://xsbo8pvpi2htywlw.public.blob.vercel-storage.com/video%20hero.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <div className="relative min-h-screen pb-12 px-6">
+          {/* Mobile Video Background (default, hidden on md and up) */}
+          <div className="md:hidden absolute inset-0 z-0">
+            <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+              <source src="/hero-video.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-primary/20"></div>
+          </div>
 
-        {/* Decorative Logo Elements (always visible) */}
-        <div className="absolute top-20 right-10 opacity-10 z-5">
-          <Image src="/mariane-logo.png" alt="" width={200} height={200} className="animate-float" />
-        </div>
-        <div className="absolute bottom-20 left-10 opacity-5 z-5">
-          <Image src="/mariane-logo.png" alt="" width={150} height={150} className="animate-float" />
-        </div>
+          {/* Desktop/Tablet Video Background (hidden on small screens) */}
+          <div className="hidden md:block absolute inset-0 z-0">
+            <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+              <source src="https://xsbo8pvpi2htywlw.public.blob.vercel-storage.com/video%20hero.mp4" type="video/mp4" />
+            </video>
+          </div>
 
-        {/* Content for Mobile (text + buttons) */}
-        <div className="container mx-auto text-center relative z-10 md:hidden">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-light font-serif tracking-wide text-gray-800 mb-6 leading-tight transition-all duration-1000 animate-fade-in-up">
-              O cuidado natural que
-              <span className="text-primary block animate-slide-in-left"> transforma e revela </span>
-              <span className="text-secondary block animate-slide-in-right"> a sua melhor versão</span>
-            </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto transition-all duration-1000 delay-300 animate-fade-in-up">
-              Sou Mariane Oliveira, terapeuta naturalista especializada em estética natural e protocolos personalizados.
-              Através de métodos naturais e da linha de produtos Eco Encanto, ajudo você a reconectar-se com seu
-              bem-estar integral.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-500 animate-bounce-in">
-              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleWhatsAppClick}>
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Agendar Consulta
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-secondary text-secondary hover:bg-secondary hover:text-white bg-white/80"
-                onClick={handleLinhaEcoClick}
-              >
-                Linha Eco Encanto
-              </Button>
+          {/* Decorative Logo Elements (always visible) */}
+          <div className="absolute top-20 right-10 opacity-10 z-5">
+            <Image src="/mariane-logo.png" alt="" width={200} height={200} className="animate-float" />
+          </div>
+          <div className="absolute bottom-20 left-10 opacity-5 z-5">
+            <Image src="/mariane-logo.png" alt="" width={150} height={150} className="animate-float" />
+          </div>
+
+          {/* Content for Mobile (text + buttons) */}
+          <div className="container mx-auto text-center relative z-10 md:hidden pt-16">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-light font-serif tracking-wide text-gray-800 mb-6 leading-tight transition-all duration-1000 animate-fade-in-up">
+                O cuidado natural que
+                <span className="text-primary block animate-slide-in-left"> transforma e revela </span>
+                <span className="text-secondary block animate-slide-in-right"> a sua melhor versão</span>
+              </h1>
+              <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto transition-all duration-1000 delay-300 animate-fade-in-up">
+                Sou Mariane Oliveira, terapeuta naturalista especializada em estética natural e protocolos
+                personalizados. Através de métodos naturais e da linha de produtos Eco Encanto, ajudo você a
+                reconectar-se com seu bem-estar integral.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-500 animate-bounce-in">
+                <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleWhatsAppClick}>
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Agendar Consulta
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-secondary text-secondary hover:bg-secondary hover:text-white bg-white/80"
+                  onClick={handleLinhaEcoClick}
+                >
+                  Linha Eco Encanto
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Content for Desktop/Tablet (buttons only, positioned) */}
-        <div className="hidden md:flex absolute bottom-12 right-12 z-10 flex-col gap-4 items-end">
-          <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleWhatsAppClick}>
-            <MessageCircle className="mr-2 h-5 w-5" />
-            Agendar Consulta
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-secondary text-secondary hover:bg-secondary hover:text-white bg-white/80"
-            onClick={handleLinhaEcoClick}
-          >
-            Linha Eco Encanto
-          </Button>
-        </div>
+          {/* Content for Desktop/Tablet (buttons only, positioned) */}
+          <div className="hidden md:flex absolute bottom-12 right-12 z-10 flex-col gap-4 items-end">
+            <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleWhatsAppClick}>
+              <MessageCircle className="mr-2 h-5 w-5" />
+              Agendar Consulta
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-secondary text-secondary hover:bg-secondary hover:text-white bg-white/80"
+              onClick={handleLinhaEcoClick}
+            >
+              Linha Eco Encanto
+            </Button>
+          </div>
 
-        {/* Floating Elements */}
-        <div className="absolute top-10 left-10 animate-float">
-          <Leaf className="h-12 w-12 text-secondary/40" />
-        </div>
-        <div className="absolute top-20 right-10 animate-float" style={{ animationDelay: "1s" }}>
-          <Sparkles className="h-10 w-10 text-primary/40" />
-        </div>
-        <div className="absolute bottom-10 left-1/4 animate-float" style={{ animationDelay: "2s" }}>
-          <Heart className="h-8 w-8 text-primary/30" />
+          {/* Floating Elements */}
+          <div className="absolute top-10 left-10 animate-float">
+            <Leaf className="h-12 w-12 text-secondary/40" />
+          </div>
+          <div className="absolute top-20 right-10 animate-float" style={{ animationDelay: "1s" }}>
+            <Sparkles className="h-10 w-10 text-primary/40" />
+          </div>
+          <div className="absolute bottom-10 left-1/4 animate-float" style={{ animationDelay: "2s" }}>
+            <Heart className="h-8 w-8 text-primary/30" />
+          </div>
         </div>
       </section>
 
