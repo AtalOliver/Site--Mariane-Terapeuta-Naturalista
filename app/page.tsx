@@ -201,7 +201,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-24 md:pt-20 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-32 md:pt-28 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
         {/* Mobile Video Background (default, hidden on md and up) */}
         <div className="md:hidden absolute inset-0 z-0">
           <video autoPlay muted loop playsInline className="w-full h-full object-cover">
@@ -290,7 +290,7 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light font-serif text-gray-800 mb-4 animate-fade-in-up tracking-wide">
+            <h2 className="text-3xl md:text-4xl font-light font-serif text-gray-800 mb-4 animate-fade-in-up tracking-wide text-center">
               Quem é Mariane Oliveira?
             </h2>
           </div>
