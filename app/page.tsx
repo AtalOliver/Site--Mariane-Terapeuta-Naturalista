@@ -201,7 +201,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-32 md:pt-28 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-40 md:pt-36 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
         {/* Mobile Video Background (default, hidden on md and up) */}
         <div className="md:hidden absolute inset-0 z-0">
           <video autoPlay muted loop playsInline className="w-full h-full object-cover">
@@ -326,7 +326,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-6 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-4 items-center">
             <div className="animate-slide-in-left">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Tudo começou com uma dor pessoal, e uma descoberta. Nunca tinha usado produtos naturais até sofrer um
