@@ -201,7 +201,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-48 md:pt-44 pb-12 px-6 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-56 md:pt-52 pb-12 px-6 min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Mobile Video Background (default, hidden on md and up) */}
         <div className="md:hidden absolute inset-0 z-0">
           <video autoPlay muted loop playsInline className="w-full h-full object-cover">
