@@ -295,7 +295,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-6 items-center mb-16">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-4 items-center mb-16">
             <div className="relative animate-slide-in-left">
               <Image
                 src="/mari-atendimento.jpg"
