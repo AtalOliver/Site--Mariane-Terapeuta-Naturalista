@@ -307,12 +307,14 @@ export default function BlogPage() {
               Voltar ao site
             </Link>
             <h1 className="text-4xl md:text-5xl font-light font-serif text-gray-800 mb-4 tracking-wide">
-              Bem-vindo(a) ao Blog da Terapeuta Naturalista Mariane Oliveira
+              Bem-vindo(a) ao Blog da
+              <br />
+              Terapeuta Naturalista Mariane Oliveira
             </h1>
             <div className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed space-y-4">
               <p>Aqui você encontra conteúdos especiais sobre cuidados naturais com a pele, bem-estar e autocuidado.</p>
               <p>
-                Mariane é Terapeuta Naturalista e desenvolve protocolos personalizados que unem ciência, natureza e
+                Mariane é Terapeuta Naturalista e desenvolve protocolos personalizados que unem técnica, natureza e
                 equilíbrio — desde a limpeza profunda e revitalização facial, até clareamento vegano, detox e
                 rejuvenescentes pro age.
               </p>
