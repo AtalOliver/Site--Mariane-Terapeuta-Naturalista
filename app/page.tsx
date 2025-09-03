@@ -295,18 +295,18 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-4 items-center mb-16 lg:sobre-section">
-            <div className="relative animate-slide-in-left lg:card-imagem">
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-16 lg:max-w-6xl lg:mx-auto lg:gap-8 lg:px-8">
+            <div className="relative animate-slide-in-left">
               <Image
                 src="/mari-atendimento.jpg"
                 alt="Mariane Oliveira em seu consultório"
                 width={400}
                 height={400}
-                className="rounded-2xl shadow-lg object-cover"
+                className="rounded-2xl shadow-lg object-cover lg:rounded-3xl lg:shadow-xl lg:opacity-95 lg:transition-all lg:duration-300 lg:hover:scale-103 lg:hover:opacity-100"
                 loading="lazy"
               />
             </div>
-            <div className="animate-slide-in-right lg:texto">
+            <div className="animate-slide-in-right">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Sou terapeuta naturalista. Atendo pessoas que buscam equilíbrio, saúde e bem-estar através da estética
                 natural e protocolos naturais personalizados.
@@ -606,7 +606,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 lg:max-w-5xl lg:mx-auto lg:gap-8">
             <div className="animate-slide-in-left">
               <form action="https://formsubmit.co/marianecarmooliveira@gmail.com" method="POST">
                 {/* FormSubmit configuration fields */}
@@ -633,9 +633,11 @@ export default function Home() {
             </div>
 
             <div className="space-y-8 animate-slide-in-right">
-              <div>
-                <h3 className="text-2xl font-bold text-primary mb-6">Contato Direto</h3>
-                <div className="space-y-4">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-secondary/5">
+                <CardHeader>
+                  <CardTitle className="text-primary">Contato Direto</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-secondary" />
                     <span className="text-gray-600">(71) 99235-3171</span>
@@ -652,24 +654,24 @@ export default function Home() {
                     <MapPin className="h-5 w-5 text-secondary" />
                     <span className="text-gray-600 hover:text-primary transition-colors">Ver localização</span>
                   </div>
-                </div>
-              </div>
 
-              <div className="flex space-x-4">
-                <Button size="lg" className="bg-green-500 hover:bg-green-600" onClick={handleWhatsAppClick}>
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  WhatsApp
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white bg-white"
-                  onClick={handleInstagramClick}
-                >
-                  <Instagram className="mr-2 h-5 w-5" />
-                  Instagram
-                </Button>
-              </div>
+                  <div className="flex space-x-4 pt-4">
+                    <Button size="lg" className="bg-green-500 hover:bg-green-600 flex-1" onClick={handleWhatsAppClick}>
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      WhatsApp
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white bg-white flex-1"
+                      onClick={handleInstagramClick}
+                    >
+                      <Instagram className="mr-2 h-5 w-5" />
+                      Instagram
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
