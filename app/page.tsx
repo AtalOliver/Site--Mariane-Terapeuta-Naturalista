@@ -331,7 +331,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto px-8">
             <div className="animate-slide-in-left">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Tudo começou com uma dor pessoal, e uma descoberta. Nunca tinha usado produtos naturais até sofrer um
