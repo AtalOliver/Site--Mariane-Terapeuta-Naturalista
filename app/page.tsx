@@ -295,8 +295,8 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-4 items-center mb-16">
-            <div className="relative animate-slide-in-left">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-4 items-center mb-16 lg:sobre-section">
+            <div className="relative animate-slide-in-left lg:card-imagem">
               <Image
                 src="/mari-atendimento.jpg"
                 alt="Mariane Oliveira em seu consultório"
@@ -306,7 +306,7 @@ export default function Home() {
                 loading="lazy"
               />
             </div>
-            <div className="animate-slide-in-right">
+            <div className="animate-slide-in-right lg:texto">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Sou terapeuta naturalista. Atendo pessoas que buscam equilíbrio, saúde e bem-estar através da estética
                 natural e protocolos naturais personalizados.
