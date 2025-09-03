@@ -291,7 +291,7 @@ export default function Home() {
       {/* Sobre Section */}
       <section
         id="sobre"
-        className="py-16 bg-gradient-to-br from-primary/15 via-white via-50% to-secondary/20 relative"
+        className="py-16 bg-gradient-to-br from-primary/15 via-white via-50% to-secondary/20 relative sobre"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
           <div className="text-center mb-16">
@@ -331,8 +331,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto px-8">
-            <div className="animate-slide-in-left">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto px-8 lg:flex lg:justify-between lg:items-center lg:px-15 lg:gap-10">
+            <div className="animate-slide-in-left texto lg:flex-1 lg:mr-10">
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Tudo começou com uma dor pessoal, e uma descoberta. Nunca tinha usado produtos naturais até sofrer um
                 corte químico no cabelo. Foi um choque, mas também um ponto de virada. Buscando alternativas para
@@ -348,7 +348,7 @@ export default function Home() {
                 o que acredito: a cura começa pelo simples, pelo natural, pelo verdadeiro.
               </p>
             </div>
-            <div className="relative animate-slide-in-right">
+            <div className="relative animate-slide-in-right imagem lg:flex-1 lg:mr-0">
               <Image
                 src="/kit-eco-encanto.jpg"
                 alt="Produtos da linha Eco Encanto"
